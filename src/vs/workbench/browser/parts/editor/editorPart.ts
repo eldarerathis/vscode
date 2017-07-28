@@ -286,6 +286,10 @@ export class EditorPart extends Part implements IEditorPart, IEditorGroupService
 		return this.tabOptions;
 	}
 
+	public hideTitleAreas(hide: boolean) {
+		this.editorGroupsControl.hideTitleAreaControls(hide);
+	}
+
 	public openEditor(input: EditorInput, options?: EditorOptions, sideBySide?: boolean): TPromise<BaseEditor>;
 	public openEditor(input: EditorInput, options?: EditorOptions, position?: Position, ratio?: number[]): TPromise<BaseEditor>;
 	public openEditor(input: EditorInput, options?: EditorOptions, arg3?: any, ratio?: number[]): TPromise<BaseEditor> {

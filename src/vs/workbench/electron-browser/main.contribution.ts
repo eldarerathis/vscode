@@ -393,6 +393,11 @@ configurationRegistry.registerConfiguration({
 			'type': 'boolean',
 			'default': false,
 			'description': nls.localize('zenMode.restore', "Controls if a window should restore to zen mode if it was exited in zen mode.")
+		},
+		'zenMode.hideEditorTitle': {
+			'type': 'boolean',
+			'default': false,
+			'description': nls.localize('zenMode.hideEditorTitle', "Controls if turning on Zen Mode also hides the title bar at the top of the editor.")
 		}
 	}
 });

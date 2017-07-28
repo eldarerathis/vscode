@@ -57,6 +57,7 @@ export interface IEditorGroupsControl {
 
 	show(editor: BaseEditor, position: Position, preserveActive: boolean, ratio?: number[]): void;
 	hide(editor: BaseEditor, position: Position, layoutAndRochade: boolean): Rochade;
+	hideTitleAreaControls(hide: boolean);
 
 	setActive(editor: BaseEditor): void;
 
@@ -2072,6 +2073,13 @@ export class EditorGroupsControl extends Themable implements IEditorGroupsContro
 				progressbar.stop().getContainer().hide();
 				break;
 		}
+	}
+
+	public hideTitleAreaControls(hide: boolean) {
+		POSITIONS.forEach(position => {
+			const titleArea = this.getTitleAreaControl(position);
+			titleArea.getContainer().style.display = hide ? 'none' : '';
+		});
 	}
 
 	public dispose(): void {

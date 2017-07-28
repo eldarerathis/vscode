@@ -117,6 +117,7 @@ interface IZenModeSettings {
 	hideTabs: boolean;
 	hideActivityBar: boolean;
 	hideStatusBar: boolean;
+	hideEditorTitle: boolean;
 	restore: boolean;
 }
 
@@ -1275,6 +1276,9 @@ export class Workbench implements IPartService {
 			if (config.hideTabs) {
 				this.editorPart.hideTabs(true);
 			}
+			if (config.hideEditorTitle) {
+				this.editorPart.hideTitleAreas(true);
+			}
 		} else {
 			if (this.zenMode.wasPanelVisible) {
 				this.setPanelHidden(false, true).done(undefined, errors.onUnexpectedError);
@@ -1285,6 +1289,7 @@ export class Workbench implements IPartService {
 			// Status bar and activity bar visibility come from settings -> update their visibility.
 			this.onDidUpdateConfiguration(true);
 			this.editorPart.hideTabs(false);
+			this.editorPart.hideTitleAreas(false);
 			const activeEditor = this.editorPart.getActiveEditor();
 			if (activeEditor) {
 				activeEditor.focus();
